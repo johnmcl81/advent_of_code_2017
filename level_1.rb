@@ -1,6 +1,6 @@
 class Level_1
-  def initialize(input)
-    @int_array = input.to_s.scan(/\d/).map { |i| i.to_i }
+  def initialize(filename)
+    @int_array = parse_input(filename)
   end
 
   def calc_total
@@ -25,6 +25,12 @@ class Level_1
       end
     end
     total
+  end
+
+  private
+
+  def parse_input(filename)
+    File.readlines("./inputs/#{filename}").to_s.scan(/\d/).map { |i| i.to_i }
   end
 
 end

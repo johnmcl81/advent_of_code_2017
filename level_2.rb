@@ -1,6 +1,6 @@
 class Level_2
-  def initialize(input)
-    @int_array = input
+  def initialize(filename)
+    @int_array = parse_input(filename)
   end
 
   def checksum
@@ -23,5 +23,15 @@ class Level_2
       end
     end
     sum
+  end
+
+  private
+
+  def parse_input(filename)
+    parsed_input = []
+    File.readlines("./inputs/#{filename}").each do |line|
+      parsed_input << line.split(' ').map(&:to_i)
+    end
+    parsed_input
   end
 end
